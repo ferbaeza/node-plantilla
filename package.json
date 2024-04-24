@@ -1,0 +1,32 @@
+{
+  "name": "nodejs-plantilla",
+  "version": "1.0.0",
+  "description": "Plantilla para comenzar un proyecto con nodeJs usando javascript",
+  "type": "module",
+  "main": "main.js",
+  "repository": "https://github.com/ferbaeza/node-plantilla",
+  "author": "Fer Baeza",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.11.5",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20",
+    "uuid4": "^2.0.3"
+  },
+  "scripts": {
+    "dev": "nodemon main.js",
+    "start:nodemon": "nodemon src/main.js",
+    "start": "src/main.js",
+    "prod:start": "yarn run prod:build && node build/index.js",
+    "prod:build": "rimraf ./build && tsc"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
