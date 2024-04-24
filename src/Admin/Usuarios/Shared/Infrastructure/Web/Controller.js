@@ -1,7 +1,7 @@
 import { LoginCommand } from '../../../Login/Application/LoginCommand.js';
 import { ApiResponse } from '../../../../../Shared/Utils/Response/ApiResponse.js';
 import { EliminarUsuarioCommand } from '../../../Escritura/EliminarUsuario/Application/EliminarUsuarioCommand.js';
-import { RegistrarUsuarioCommand } from '../../../Escritura/Registro/Application/RegistrarUsuarioCommand.js';
+import { CrearUsuarioCommand } from '../../../Escritura/CrearUsuario/Application/CrearUsuarioCommand.js';
 import { FichaUsuarioCommand } from '../../../Lectura/FichaUsuario/Application/FichaUsuarioCommand.js';
 import { UsuarioYaExisteException, UsuarioPasswordErroneoException, 
     UsuarioNOExisteException, UsuarioIdNOExiste, 
@@ -16,8 +16,8 @@ import { EditarUsuarioCommand } from '../../../Escritura/EditarUsuario/Applicati
 
 export class UsuarioController {
 
-    constructor(registrarUsuarioCommandHandler) {
-        this.registrarUsuarioCommandHandler = registrarUsuarioCommandHandler;
+    constructor(crearUsuarioCommandHandler) {
+        this.crearUsuarioCommandHandler = crearUsuarioCommandHandler;
 
     }
 
@@ -68,9 +68,9 @@ export class UsuarioController {
     registrarUsuario = async (req, res) => {
         try {
             const {id, nombre, email, password } = req.body;
-            const command = new RegistrarUsuarioCommand(id,nombre, email, password);
-
-            const usuarioRegistrado = await this.registrarUsuarioCommandHandler.handle(command);
+            const command = new CrearUsuarioCommand(id, nombre, email, password);
+            
+            const usuarioRegistrado = await this.crearUsuarioCommandHandler.handle(command);
             ApiResponse.Ok(res, usuarioRegistrado, `Usuario ${usuarioRegistrado.email} Registrado Correctamente`);
             
         } catch (error) {

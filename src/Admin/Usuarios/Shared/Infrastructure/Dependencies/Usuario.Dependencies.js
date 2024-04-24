@@ -1,4 +1,4 @@
-import { RegistrarUsuarioCommandHandler } from "../../../Escritura/Registro/Application/RegistrarUsuarioCommandHandler.js";
+import { CrearUsuarioCommandHandler } from "../../../Escritura/CrearUsuario/Application/CrearUsuarioCommandHandler.js";
 import { UsuarioService } from "../../../Escritura/Shared/Domain/Service/UsuarioService.js";
 import { UsuarioEscrituraRepository } from '../../../Escritura/Shared/Infrastructure/UsuarioRepository.js';
 import { UsuarioController } from "../Web/Controller.js";
@@ -7,14 +7,14 @@ import { UsuarioController } from "../Web/Controller.js";
 const usuarioEscrituraRepositoryInterface = new UsuarioEscrituraRepository()
 const service = new UsuarioService(usuarioEscrituraRepositoryInterface);
 
-const registrarUsuarioCommandHandler = new RegistrarUsuarioCommandHandler(
+const crearUsuarioCommandHandler = new CrearUsuarioCommandHandler(
     usuarioEscrituraRepositoryInterface,
     service
 );
 
 
 const Controller = new UsuarioController(
-    registrarUsuarioCommandHandler
+    crearUsuarioCommandHandler
 );
 
 export { Controller };

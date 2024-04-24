@@ -14,17 +14,21 @@ export async function connection(){
             database: database,
             synchronize: true,
             logging: false,
-            // entities: [
-            //     "src/entity/**/*.ts"
-            // ],
-            // migrations: [
-            //     "src/migration/**/*.ts"
-            // ],
+            entities: [
+                "./Entities/**/*.js"
+            ],
+            migrations: [
+                "./Migrations/**/*.js"
+            ],
             // subscribers: [
             //     "src/subscriber/**/*.ts"
             // ],
+
+
         }).then(async connection => {
             console.log("Successfully connected to the database.");
+            return connection;
+
         }).catch(error => console.log(error));
         console.log('Conexión a la base de datos establecida correctamente');
 
