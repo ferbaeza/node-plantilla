@@ -1,7 +1,6 @@
 import express  from 'express';
 import { ApiResponse } from '../Utils/Response/ApiResponse.js';
 import { userRouter } from '../../Admin/Usuarios/Shared/Infrastructure/Web/Routes.js';
-import { proyectosRouter } from '../../Admin/Proyectos/Shared/Infrastructure/Web/Routes.js';
 
 const router = express.Router();
 const apiPrefix = '/api';
@@ -13,6 +12,5 @@ router.get('/', (req, res) => {
 })
 
 router.use(apiPrefix, userRouter);
-router.use(apiPrefix, proyectosRouter);
 
 export { router as apiRouter };

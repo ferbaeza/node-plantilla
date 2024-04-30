@@ -1,21 +1,9 @@
-const OK = 200;
-const CREATED = 201;
-const NO_CONTENT = 204;
-const BAD_REQUEST = 400;
-const UNAUTHORIZED = 401;
-const FORBIDDEN = 403;
-const NOT_FOUND = 404;
-const CONFLICT = 409;
-const INTERNAL_SERVER_ERROR = 500;
-
-export {
-  OK,
-  CREATED,
-  NO_CONTENT,
-  BAD_REQUEST,
-  UNAUTHORIZED,
-  FORBIDDEN,
-  NOT_FOUND,
-  CONFLICT,
-  INTERNAL_SERVER_ERROR
-};
+export const OK = 200;
+export const CREATED = 201;
+export const NO_CONTENT = 204;
+export const BAD_REQUEST = 400;
+export const UNAUTHORIZED = 401;
+export const FORBIDDEN = 403;
+export const NOT_FOUND = 404;
+export const CONFLICT = 409;
+export const INTERNAL_SERVER_ERROR = 500;
