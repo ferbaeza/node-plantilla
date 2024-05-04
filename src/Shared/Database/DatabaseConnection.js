@@ -1,45 +1,23 @@
-import typeorm from 'typeorm';
-// import Usuario from './Entities/Usuarios/Usuario.js';
-import { database, username , password, host, dialect, portDB} from "../Config/config.js";
+import pg from 'pg';
+import { database, host, password, portDB, username } from '../Config/config.js';
 
 
-export async function connection(){
+export const conectar = async () => {
     try {
-        const connection = typeorm.createConnection({
-            type: "postgres",
-            host: host,
-            port: Number(portDB),
-            username: username,
-            password: password,
-            database: database,
-            synchronize: true,
-            logging: false,
-            entities: [
-                "./Entities/**/*.js"
-            ],
-            migrations: [
-                "./Migrations/**/*.js"
-            ],
-            // subscribers: [
-            //     "src/subscriber/**/*.ts"
-            // ],
-
-
-        }).then(async connection => {
-            console.log("Successfully connected to the database.");
-            return connection;
-
-        }).catch(error => console.log(error));
-        console.log('Conexión a la base de datos establecida correctamente');
-
+        const pool = new pg.Pool(
+            {
+                user: username,
+                host: host,
+                database: database,
+                password: password,
+                port: portDB,
+            }
+        );
+        console.log('Conectado a la base de datos correctamente.');
+        
+        return pool;
 
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error al conectar a la base de datos.', error);
     }
-}
-
-export async function close(){
-    await connection.connection.close();
-    console.log('Conexión a la base de datos cerrada');
-}
-
+};

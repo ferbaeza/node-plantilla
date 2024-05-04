@@ -11,8 +11,4 @@ export class FichaUsuarioCommandHandler{
         }
         return usuario;
     }
-
-    // static async projects(command){
-    //     return await this.repository.findOne({id: command.id});
-    // }
 }

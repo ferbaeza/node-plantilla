@@ -1,5 +1,6 @@
+
 export class UsuarioEscrituraRepositoryInterface {
-    async findAll(){
+    async save(){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 }

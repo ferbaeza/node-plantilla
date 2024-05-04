@@ -16,14 +16,20 @@ import { EditarUsuarioCommand } from '../../../Escritura/EditarUsuario/Applicati
 
 export class UsuarioController {
 
-    constructor(crearUsuarioCommandHandler) {
+    constructor(
+        crearUsuarioCommandHandler, 
+        listarUsuariosCommandHandler,
+        fichaUsuarioCommandHandler,
+    ) {
         this.crearUsuarioCommandHandler = crearUsuarioCommandHandler;
+        this.listarUsuariosCommandHandler = listarUsuariosCommandHandler,
+        this.fichaUsuarioCommandHandler = fichaUsuarioCommandHandler;
 
     }
 
-    getAll = async (req, res) => {
+    listarUsuarios = async (req, res) => {
         try {
-            const data = await this.listarProyectosUsuario.handle();
+            const data = await this.listarUsuariosCommandHandler.handle();
             ApiResponse.Ok(res, data, "getAll");
         
         } catch (error) {
@@ -69,7 +75,7 @@ export class UsuarioController {
         try {
             const {id, nombre, email, password } = req.body;
             const command = new CrearUsuarioCommand(id, nombre, email, password);
-            
+
             const usuarioRegistrado = await this.crearUsuarioCommandHandler.handle(command);
             ApiResponse.Ok(res, usuarioRegistrado, `Usuario ${usuarioRegistrado.email} Registrado Correctamente`);
             

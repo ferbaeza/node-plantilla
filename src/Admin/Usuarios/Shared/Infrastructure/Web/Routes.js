@@ -3,7 +3,7 @@ import { Controller } from '../Dependencies/Usuario.Dependencies.js';
 
 const router = express.Router();
 
-router.get('/usuarios', Controller.getAll.bind(Controller.getAll));
+router.get('/usuarios', Controller.listarUsuarios.bind(Controller.getAll));
 router.post('/login', Controller.login.bind(Controller.login));
 router.post('/usuario', Controller.registrarUsuario.bind(Controller.registrarUsuario));
 
