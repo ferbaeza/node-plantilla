@@ -1,11 +1,12 @@
-export class Usuario {
+export class UsuariosListado {
 
-    constructor(nombre, email) {
+    constructor(id, nombre, email) {
+        this.id = id;
         this.nombre = nombre;
         this.email = email;
     }
 
-    static fromCommand(command) {
-        return new Usuario(command.nombre, command.email);
+    static fromRepository(repo) {
+        return new UsuariosListado(repo.id, repo.nombre, repo.email);
     }
 }

@@ -1,15 +1,20 @@
+import { Criteria } from "../../../../../../Shared/Criteria/Criteria.js";
 
-export class UsuarioService {
+export class EmailUsuarioExisteService {
     constructor(repository) {
         this.repository = repository;
     }
-    comprobar = async (email) => {
-        console.log('comprobar', email);
-        const existeUsuario = await this.repository.findByEmail(email);
-        console.log("existeUsuario", existeUsuario);
+
+    async comprobar(email){
+
+        const criteria = new Criteria();
+        criteria.where('email', email);
+        const existeUsuario = await this.repository.getEntity(criteria);
+
         if (existeUsuario) {
             return true;
         }
+        return false;
     }
 
     verificarEmailUsuario = async (usuarioEditado, usuarios) => {

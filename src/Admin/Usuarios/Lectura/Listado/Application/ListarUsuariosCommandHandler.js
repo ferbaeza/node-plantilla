@@ -6,9 +6,9 @@ export class ListarUsuariosCommandHandler{
         this.repository = repository;
     }
     async handle(){
-        const criteria = new Criteria();
-        const usuarios = await this.repository.findAll(criteria);
+        // const criteria = new Criteria();
+        const usuarios = await this.repository.getCollection(new Criteria());
         const totalUsuarios = usuarios.length;
-        return {usuarios, totalUsuarios};
+        return { totalUsuarios, usuarios};
     }
 }

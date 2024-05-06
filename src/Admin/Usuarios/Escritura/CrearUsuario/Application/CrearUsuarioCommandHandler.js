@@ -9,13 +9,11 @@ export class CrearUsuarioCommandHandler {
     }
     async handle(command){
 
-        // const usuarioExiste = await this.service.comprobar(command.email);
-
-        // if (usuarioExiste) {
-        //     throw new UsuarioYaExisteException(UsuarioYaExiste);
-        // }
-
+        const usuarioExiste = await this.service.comprobar(command.email);
+        if (usuarioExiste) {
+            throw new UsuarioYaExisteException(UsuarioYaExiste);
+        }
         const registroUsuario = NuevoUsuario.fromCommand(command);
-        return this.repository.save(registroUsuario);
+        return this.repository.registrarNuevoUsuario(registroUsuario);
     }
 }

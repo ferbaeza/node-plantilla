@@ -1,20 +1,22 @@
 import { UsuarioEditado } from "../Domain/UsuarioEditado.js";
-import { UsuarioService } from "../../../Shared/Domain/Service/UsuarioService.js";
 import { UsuarioIdNOExisteException, UsuariosEmailYaExisteException } from "../../../../../Shared/Utils/Exceptions/UsuariosExceptions.js";
+import { Criteria } from "../../../../../Shared/Criteria/Criteria.js";
 
 export class EditarUsuarioCommandHandler {
-    constructor(repository) {
+
+    constructor(usuarioLecturaRepository, repository, service) {
+        this.usuarioLecturaRepository = usuarioLecturaRepository;
         this.repository = repository;
-        this.service = new UsuarioService(this.repository);
+        this.service = service;
     }
 
     async handle(command) {
-        const usuarios = await this.repository.findAll();
-        if (usuarios.length == 0) {
-            throw new NOExistenUsuariosException();
-        }
 
-        const usuario = await this.repository.findOne({ id: command.id });
+        const criteria = new Criteria();
+        criteria.where('id', command.id);
+        const usuario = await this.usuarioLecturaRepository.getEntity(criteria);
+        console.log(usuario);
+        return;
         if (!usuario) {
             throw new UsuarioIdNOExisteException();
         }

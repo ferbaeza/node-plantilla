@@ -20,10 +20,12 @@ export class UsuarioController {
         crearUsuarioCommandHandler, 
         listarUsuariosCommandHandler,
         fichaUsuarioCommandHandler,
+        editarUsuarioCommandHandler
     ) {
         this.crearUsuarioCommandHandler = crearUsuarioCommandHandler;
-        this.listarUsuariosCommandHandler = listarUsuariosCommandHandler,
+        this.listarUsuariosCommandHandler = listarUsuariosCommandHandler;
         this.fichaUsuarioCommandHandler = fichaUsuarioCommandHandler;
+        this.editarUsuarioCommandHandler = editarUsuarioCommandHandler;
 
     }
 
@@ -91,7 +93,6 @@ export class UsuarioController {
             const { id } = req.params;
             const { nombre, email, password } = req.body;
             const command = new EditarUsuarioCommand(id, nombre, email, password);
-
             const data = await this.editarUsuarioCommandHandler.handle(command);
 
             ApiResponse.Ok(res, data, `Usuario ${id} Modificado Correctamente`);

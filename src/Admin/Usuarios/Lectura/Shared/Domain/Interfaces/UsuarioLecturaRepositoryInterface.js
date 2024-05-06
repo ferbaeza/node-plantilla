@@ -1,6 +1,6 @@
 export class UsuarioLecturaRepositoryInterface {
-    
-    async findAll(criteria){
+
+    async getCollection(criteria) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 }
