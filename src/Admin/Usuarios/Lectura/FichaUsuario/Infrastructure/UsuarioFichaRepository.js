@@ -1,6 +1,6 @@
 import { UsuarioDaoEntity } from '../../../../../Shared/Dao/Usuarios/UsuarioDaoEntity.js';
 import { UsuarioFichaRepositoryInterface } from '../Domain/Interfaces/UsuarioFichaRepositoryInterface.js';
-import { findOne } from '../../../../../Shared/Database/Database.js';
+// import { findOne } from '../../../../../Shared/Database/Builder/SqlBuilder.js';
 
 
 export class UsuarioFichaRepository extends UsuarioFichaRepositoryInterface {

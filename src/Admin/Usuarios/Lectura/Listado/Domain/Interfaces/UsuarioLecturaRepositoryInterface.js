@@ -1,5 +1,6 @@
 export class UsuarioLecturaRepositoryInterface {
-    async findAll(){
+    
+    async findAll(criteria){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 }

@@ -1,7 +1,7 @@
 import { ApiResponse } from '../../../../../Shared/Utils/Response/ApiResponse.js';
 import { UsuarioDaoEntity } from '../../../../../Shared/Dao/Usuarios/UsuarioDaoEntity.js';
 import { UsuarioEscrituraRepositoryInterface } from '../Domain/Interfaces/UsuarioEscrituraRepositoryInterface.js';
-import { insert } from '../../../../../Shared/Database/Database.js';
+// import { insert } from '../../../../../Shared/Database/Builder/SqlBuilder.js';
 
 export class UsuarioEscrituraRepository extends UsuarioEscrituraRepositoryInterface {
 
